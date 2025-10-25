@@ -4,14 +4,12 @@ const diceButton = document.querySelector('.dice-wrapper');
 
 async function fetchAdvice() {
     try {
-        adviceText.classList.add('fetching');
+        
         const response = await fetch('https://api.adviceslip.com/advice');
-        const data = await response.json();523
+        const data = await response.json();
         
         adviceNumber.textContent = `ADVICE #${data.slip.id}`;
-        adviceText.textContent = `"${data.slip.advice}"`;
-        
-        adviceText.classList.remove('fetching');
+        adviceText.textContent = `"${data.slip.advice}"`; 
     } 
     
     catch (error) {
@@ -21,4 +19,4 @@ async function fetchAdvice() {
 }
 
 diceButton.addEventListener('click', fetchAdvice);
-window.addEventListener('DOMContentLoaded', fetchAdvice);
+fetchAdvice();
